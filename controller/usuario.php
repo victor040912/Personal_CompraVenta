@@ -38,7 +38,13 @@
             $data=Array();
             foreach($datos as $row){
                 $sub_array = array();
+                $sub_array = $row["usu_correo"];
                 $sub_array = $row["usu_nom"];
+                $sub_array = $row["usu_ape"];
+                $sub_array = $row["usu_dni"];
+                $sub_array = $row["usu_telf"];
+                $sub_array = $row["usu_pass"];
+                $sub_array = $row["rol_id"];
                 $sub_array = "Editar";
                 $sub_array = "Eliminar";
                 $data[] = $sub_array;
@@ -58,6 +64,12 @@
                     $output["usu_id"] = $row["usu_id"];
                     $output["suc_id"] = $row["suc_id"];
                     $output["usu_nom"] = $row["usu_nom"];
+                    $output["usu_ape"] = $row["usu_ape"];
+                    $output["usu_dni"] = $row["usu_dni"];
+                    $output["usu_telf"] = $row["usu_telf"];
+                    $output["usu_pass"] = $row["usu_pass"];
+                    $output["rol_id"] = $row["rol_id"];
+
                 }
                 echo json_encode($output);
             }

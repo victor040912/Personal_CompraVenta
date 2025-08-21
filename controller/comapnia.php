@@ -1,27 +1,27 @@
 <?php
 
     require_once("../config/conexion.php");
-    require_once("../models/Categoria.php");
+    require_once("../models/Compania.php");
 
-    $categoria=new Categoria();
+    $compania=new Compania();
 
     switch($_GET{"op"}){
 
         /* TODO: Guardar y editar, guardar como el ID este vacio y actualizar cuando se envie el ID */
         case "guardaryeditar":
-            if(empty($_POST["cat_id"])){
-                $categoria->insert_categoria($_POST["suc_id"],$_POST["cat_nom"]);
+            if(empty($_POST["com_id"])){
+                $compania->insert_compania($_POST["com_nom"]);
             }else{
-                $categoria->update_categoria($_POST["cat_id"],$_POST["suc_id"],$_POST["cat_nom"]);
+                $compania->update_compania($_POST["com_id"],$_POST["com_nom"]);
             }
             break;
         /* TODO: Listado de registros formato JSON para datatable */
         case "listar":
-            $datos=$categoria->get_categoria_x_suc_id($_POST["suc_id"]);
+            $datos=$compania->get_compania();
             $data=Array();
             foreach($datos as $row){
                 $sub_array = array();
-                $sub_array = $row["cat_nom"];
+                $sub_array = $row["com_nom"];
                 $sub_array = "Editar";
                 $sub_array = "Eliminar";
                 $data[] = $sub_array;
@@ -35,19 +35,18 @@
             break;
             /* TODO: Mostrar informacion de registro segun su ID */
         case "mostrar":
-            $datos=$categoria->get_categoria_x_cat_id($_POST["cat_id"]);
+            $datos=$compania->get_compania_x_com_id($_POST["com_id"]);
             if(is_array($datos)==true and count($datos)>0){
                 foreach($datos as $row){
-                    $output["cat_id"] = $row["cat_id"];
-                    $output["suc_id"] = $row["suc_id"];
-                    $output["cat_nom"] = $row["cat_nom"];
+                    $output["com_id"] = $row["com_id"];
+                    $output["com_nom"] = $row["com_nom"];
                 }
                 echo json_encode($output);
             }
             break;
         /* TODO: cambiar esato a 0 del registro */
         case "eliminar";
-            $categoria->delete_categoria($_POST["cat_id"]);
+            $compania->delete_compania($_POST["com_id"]);
             break;
     }
 

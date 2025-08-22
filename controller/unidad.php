@@ -5,7 +5,7 @@
 
     $unidad=new Unidad();
 
-    switch($_GET{"op"}){
+    switch($_GET["op"]){
 
         /* TODO: Guardar y editar, guardar como el ID este vacio y actualizar cuando se envie el ID */
         case "guardaryeditar":
@@ -46,7 +46,7 @@
             }
             break;
         /* TODO: cambiar esato a 0 del registro */
-        case "eliminar";
+        case "eliminar":
             $unidad->delete_unidad($_POST["und_id"]);
             break;
     }

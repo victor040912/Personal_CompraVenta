@@ -1,4 +1,6 @@
 <?php
+
+    session_start();
     class conectar{
         protected $dbh;
 
@@ -10,6 +12,10 @@
             }catch(Exception $e){
                 print "Error Conexion BD". $e->getMessage() ."<br/>>";
             }
+        }
+
+        public static function ruta(){
+            return "http://localhost/PERSONAL_CompraVenta/";
         }
     }
 ?>

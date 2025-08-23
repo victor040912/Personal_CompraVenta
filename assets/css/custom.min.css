@@ -32,5 +32,34 @@
     line-height: 1.5;                 /* Espaciado entre líneas */
     text-shadow: 1px 1px 3px rgba(0,0,0,0.6); /* Opcional: sombra para contraste */
 }
+/* 
+Color menu de home */
+[data-sidebar="dark"] .navbar-brand-box,
+[data-sidebar="dark"] .app-menu.navbar-menu {
+    background-color: #FAF3E0 !important; /* beige claro */
+}
 
+/* Topbar */
+[data-topbar="dark"] .navbar-header {
+    background-color: #F5F5DC !important; /* beige */
+}
+
+
+/* Sidebar y navbar en beige claro */
+[data-sidebar="dark"] .navbar-brand-box,
+[data-sidebar="dark"] .app-menu.navbar-menu {
+    background-color: #FAF3E0 !important; /* beige claro */
+}
+
+/* Topbar */
+[data-topbar="dark"] .navbar-header {
+    background-color: #F5F5DC !important; /* beige */
+}
+
+/* Texto de menús y enlaces en negro */
+[data-sidebar="dark"] .app-menu.navbar-menu .nav-link,
+[data-sidebar="dark"] .app-menu.navbar-menu .menu-title,
+[data-sidebar="dark"] .app-menu.navbar-menu span {
+    color: #000000 !important; /* negro */
+}
 

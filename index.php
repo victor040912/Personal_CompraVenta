@@ -107,21 +107,21 @@
 
                                                 <div class="mb-3">
                                                     <label for="emp_id" class="form-label">Empresa</label>
-                                                    <select type="text" class="form-select" name="emp_id" id="emp_id" aria-label="Seleccionar">
+                                                    <select type="text" class="form-control form-select" name="emp_id" id="emp_id" aria-label="Seleccionar">
                                                         <option selected>Seleccionar </option>
                                                     </select>
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label for="suc_id" class="form-label">Sucursal</label>
-                                                    <select type="text" class="form-select" name="suc_id" id="suc_id" aria-label="Seleccionar">
+                                                    <select type="text" class="form-control form-select" name="suc_id" id="suc_id" aria-label="Seleccionar">
                                                         <option selected>Seleccionar </option>
                                                     </select>
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label for="usu_correo" class="form-label">Usuario</label>
-                                                    <input type="text" class="form-control" name="usu_correo" id="usu_correo" placeholder=" Ingrese su usuario">
+                                                    <input type="text" class="form-control form-select" name="usu_correo" id="usu_correo" placeholder=" Ingrese su usuario">
                                                 </div>
 
                                                 <div class="mb-3">

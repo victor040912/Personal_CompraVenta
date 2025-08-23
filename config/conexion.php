@@ -17,4 +17,3 @@
             return "http://localhost/PERSONAL_CompraVenta/";
         }
     }
-?>

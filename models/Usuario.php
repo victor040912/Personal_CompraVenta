@@ -87,14 +87,10 @@
                         
                         header("Location:".Conectar::ruta()."view/home/");
                     }else{
-                        header("Location: ".Conectar::ruta()."?log=fail");
-                        exit();
-                        
+                        exit();                       
                     }
-                }
-                
+                }                
             }else{
-                header("Location: ".conectar::ruta());
                 exit();
             }
         }

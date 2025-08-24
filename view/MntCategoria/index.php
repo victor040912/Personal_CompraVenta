@@ -43,7 +43,7 @@
                         <div class="col-lg-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <button type="button" class="btn btn-primary btn-label waves-effect waves-light rounded-pill"><i class="ri-user-smile-line label-icon align-middle rounded-pill fs-16 me-2"></i> Primary</button>
+                                                <button type="button" id="btnnuevo" class="btn btn-primary btn-label waves-effect waves-light rounded-pill"><i class="ri-user-smile-line label-icon align-middle rounded-pill fs-16 me-2"></i> Nuevo Registro</button>
                                             </div>
                                             <div class="card-body">
                                                 <table id="table_data" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
@@ -68,6 +68,8 @@
             <?php require_once("../html/footer.php");  ?>
         </div>
     </div>
+
+    <?php require_once("mantenimiento.php");  ?>
 
     <?php require_once("../html/js.php");  ?>
     <script type="text/javascript" src="mntcategoria.js"></script>

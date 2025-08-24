@@ -629,6 +629,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 
+     <!-- Sweet Alerts js -->
+    <script src="../../assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Sweet alert init js-->
+    <script src="../../assets/js/pages/sweetalerts.init.js"></script>
+
+       <!-- prismjs plugin -->
+    <script src="../../assets/libs/prismjs/prism.js"></script>
+
+    <!-- Lord Icon -->
+    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+
+    <!-- Modal Js -->
+    <script src="../../assets/js/pages/modal.init.js"></script>
+
     <!-- App js -->
     <script src="../../assets/js/app.js"></script>
     

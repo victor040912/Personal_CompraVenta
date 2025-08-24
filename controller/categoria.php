@@ -39,9 +39,9 @@
             $datos=$categoria->get_categoria_x_cat_id($_POST["cat_id"]);
             if(is_array($datos)==true and count($datos)>0){
                 foreach($datos as $row){
-                    $output["cat_id"] = $row["cat_id"];
-                    $output["suc_id"] = $row["suc_id"];
-                    $output["cat_nom"] = $row["cat_nom"];
+                    $output["CAT_ID"] = $row["CAT_ID"];
+                    $output["SUC_ID"] = $row["SUC_ID"];
+                    $output["CAT_NOM"] = $row["CAT_NOM"];
                 }
                 echo json_encode($output);
             }

@@ -21,9 +21,10 @@
             $data=Array();
             foreach($datos as $row){
                 $sub_array = array();
-                $sub_array = $row["cat_nom"];
-                $sub_array = "Editar";
-                $sub_array = "Eliminar";
+                $sub_array[] = $row["CAT_NOM"];
+                $sub_array[] = $row["FECH_CREA"];
+                $sub_array[] = '<button type="button" onClick="editar('.$row["CAT_ID"].')" id="'.$row["CAT_ID"].'" class="btn btn-primary waves-effect waves-light"><i class="ri-edit-2-line"></i></button>';
+                $sub_array[] = '<button type="button" onClick="eliminar('.$row["CAT_ID"].')" id="'.$row["CAT_ID"].'" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-delete-bin-5-line"></i></button>';
                 $data[] = $sub_array;
             }
 

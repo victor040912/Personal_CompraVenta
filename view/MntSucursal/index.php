@@ -1,5 +1,6 @@
 <?php 
     require_once("../../config/conexion.php");
+    if(isset($_SESSION["USU_ID"])){
 ?>
 
 <!doctype html>
@@ -49,7 +50,6 @@
                                                 <table id="table_data" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                                                     <thead>
                                                         <tr>
-                                                            <th>Ruc</th>
                                                             <th>Nombre</th>
                                                             <th>FechaCreacion</th>
                                                             <th></th>
@@ -73,7 +73,12 @@
     <?php require_once("mantenimiento.php");  ?>
 
     <?php require_once("../html/js.php");  ?>
-    <script type="text/javascript" src="mntempresa.js"></script>
+    <script type="text/javascript" src="mntsucursal.js"></script>
 </body>
 
 </html>
+<?php
+    }else{
+        header("Location:".Conectar::ruta()."view/404/");
+    }
+?>

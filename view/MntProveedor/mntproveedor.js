@@ -80,12 +80,12 @@ $(document).ready(function(){
 function editar(prov_id){
     $.post("../../controller/proveedor.php?op=mostrar",{prov_id:prov_id},function(data){
         data=JSON.parse(data);
-        $('#prov_id').val(data.PROV_ID);
-        $('#prov_nom').val(data.PROV_NOM);
-        $('#prov_ruc').val(data.PROV_RUC);
-        $('#prov_telf').val(data.PROV_TELF);
-        $('#prov_direcc').val(data.PROV_DIRECC);
-        $('#prov_correo').val(data.PROV_CORREO);
+        $('#prod_id').val(data.PROD_ID);
+        $('#prod_nom').val(data.PROD_NOM);
+        $('#prod_descrip').val(data.PROD_DESCRIP);
+        $('#prod_pcompra').val(data.PROD_PCOMPRA);
+        $('#prod_pventa').val(data.PROD_PVENTA);
+        $('#prod_stock').val(data.PROD_STOCK);
     });
     $('#lbltitulo').html('Editar Registro');
     $('#modalmantenimiento').modal('show');

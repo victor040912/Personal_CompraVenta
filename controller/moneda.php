@@ -50,6 +50,19 @@
         case "eliminar":
             $moneda->delete_moneda($_POST["mon_id"]);
             break;
+        
+        /* TODO: Listar Combo */
+        case "combo";
+            $datos=$moneda->get_moneda_x_suc_id($_POST["suc_id"]);
+            if(is_array($datos)==true and count($datos)>0){
+                $html="";
+                $html.="<option value='0' selected>Seleccionar</option>";
+                foreach($datos as $row){
+                    $html.= "<option value='".$row["MON_ID"]."'>".$row["MON_NOM"]."</option>";
+                }
+                echo $html;
+            }
+            break;
     }
 
 ?>

@@ -32,6 +32,18 @@ function guardaryeditar(e){
 
 $(document).ready(function(){
 
+    $.post("../../controller/categoria.php?op=combo",{suc_id:suc_id},function(data){
+        $("#cat_id").html(data);
+    });
+
+    $.post("../../controller/unidad.php?op=combo",{suc_id:suc_id},function(data){
+        $("#und_id").html(data);
+    });
+
+    $.post("../../controller/moneda.php?op=combo",{suc_id:suc_id},function(data){
+        $("#mon_id").html(data);
+    });
+
     $('#table_data').DataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -92,7 +104,6 @@ function editar(prod_id){
         $('#cat_id').val(data.CAT_ID).trigger('change');
         $('#und_id').val(data.UND_ID).trigger('change');
         $('#mon_id').val(data.MON_ID).trigger('change');
-        $('#pre_imagen').html(data.PROD_IMG);
     });
     $('#lbltitulo').html('Editar Registro');
     $('#modalmantenimiento').modal('show')
@@ -125,9 +136,15 @@ function eliminar(prod_id){
 
 $(document).on("click","#btnnuevo", function(){
     $('#prod_id').val('');
-    $('prod_nom').val('');
+    $('#prod_nom').val('');
+    $('#prod_descrip').val('');
+    $('#prod_pcompra').val('');
+    $('#prod_pventa').val('');
+    $('#prod_stock').val('');
+    $('#cat_id').val('').trigger('change');
+    $('#und_id').val('').trigger('change');
+    $('#mon_id').val('').trigger('change');
     $('#lbltitulo').html('Nuevo Registro');
-    $("#mantenimiento_form")[0].reset();
     $('#modalmantenimiento').modal('show');
 });
 

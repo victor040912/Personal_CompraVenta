@@ -86,6 +86,7 @@
                         $_SESSION["SUC_ID"]=$resultado["SUC_ID"];
                         $_SESSION["COM_ID"]=$resultado["COM_ID"];
                         $_SESSION["EMP_ID"]=$resultado["EMP_ID"];
+                        $_SESSION["ROL_ID"]=$resultado["ROL_ID"];
                         
                         header("Location:".Conectar::ruta()."view/home/");
                     }else{
@@ -95,6 +96,16 @@
             }else{
                 exit();
             }
+        }
+
+        public function update_usuario_pass($usu_id,$usu_pass){
+            $conectar=parent::Conexion();
+            $sql="SP_U_USUARIO_02 ?,?";
+            $query=$conectar->prepare($sql);
+            $query->bindValue(1,$usu_id);
+            $query->bindValue(2,$usu_pass);
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
         }
     }
     

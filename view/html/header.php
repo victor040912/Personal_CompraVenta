@@ -63,6 +63,7 @@
                                 </span>
                             </button>
 
+                            <input type="hidden" name="USU_IDx" id="USU_IDx" value="<?php echo $_SESSION["USU_ID"] ?>"/>
                             <input type="hidden" name="SUC_IDx" id="SUC_IDx" value="<?php echo $_SESSION["SUC_ID"] ?>"/>
                             <input type="hidden" name="COM_IDx" id="COM_IDx" value="<?php echo $_SESSION["COM_ID"] ?>"/>
                             <input type="hidden" name="EMP_IDx" id="EMP_IDx" value="<?php echo $_SESSION["EMP_ID"] ?>"/>
@@ -70,9 +71,9 @@
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
                                 <h6 class="dropdown-header">Bienvenido <?php echo $_SESSION["USU_NOM"] ?> </h6>
-                                <a class="dropdown-item" href="pages-profile.html"><i
+                                <a class="dropdown-item" href="../MntPerfil/"><i
                                         class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Profile</span></a>
+                                        class="align-middle">Perfil</span></a>
                                 <a class="dropdown-item" href="pages-faqs.html"><i
                                         class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Ayuda</span></a>

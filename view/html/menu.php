@@ -1,8 +1,13 @@
-<!-- ========== App Menu ========== -->
+<?php
+    require_once("../../models/Menu.php");
+    $menu = new Menu();
+    /* TODO: Obtener listado de acceso por ROL ID del Usuario */
+    $datos = $menu->get_menu_x_rol_id($_SESSION["ROL_ID"]);
+?>
+
         <div class="app-menu navbar-menu">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <!-- Dark Logo-->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="../../assets/images/LogoA.png" alt="" height="50">
@@ -11,7 +16,6 @@
                         <img src="../../assets/images/LogoA.png" alt="" height="100">
                     </span>
                 </a>
-                <!-- Light Logo-->
                 <a href="index.html" class="logo LogoA">
                     <span class="logo-sm">
                         <img src="../../assets/images/LogoA.png" alt="" height="50">
@@ -32,60 +36,36 @@
                     </div>
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="../home/">
-                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
-                            </a>
-                        </li> <!-- end Dashboard Menu -->
+
+                        <?php
+                            foreach ($datos as $row) {
+                            if ($row["MEN_GRUPO"]=="Dashboard" && $row["MEND_PERMI"]=="Si"){
+                                    ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link menu-link" href="<?php echo $row["MEN_RUTA"];?>">
+                                                <i class="ri-honour-line"></i> <span data-key="t-widgets"><?php echo $row["MEN_NOM"];?></span>
+                                            </a>
+                                        </li>
+                                    <?php
+                                }
+                            }
+                        ?>
 
                         <li class="menu-title"><span data-key="t-menu">Mantenimiento</span></li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="../MntCategoria/">
-                                <i class="ri-honour-line"></i> <span data-key="t-widgets">Mnt.Categoria</span>
-                            </a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="../MntProducto/">
-                                <i class="ri-honour-line"></i> <span data-key="t-widgets">Mnt.Producto</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="../MntCliente/">
-                                <i class="ri-honour-line"></i> <span data-key="t-widgets">Mnt.Cliente</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="../MntProveedor/">
-                                <i class="ri-honour-line"></i> <span data-key="t-widgets">Mnt.Proveedor</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="../MntMoneda/">
-                                <i class="ri-honour-line"></i> <span data-key="t-widgets">Mnt.Moneda</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="../MntUndMedida/">
-                                <i class="ri-honour-line"></i> <span data-key="t-widgets">Mnt.UndMedida</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="../MntEmpresa/">
-                                <i class="ri-honour-line"></i> <span data-key="t-widgets">Mnt.Empresa</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="../MntSucursal/">
-                                <i class="ri-honour-line"></i> <span data-key="t-widgets">Mnt.Sucursal</span>
-                            </a>
-                        </li>
+                         <?php
+                            foreach ($datos as $row) {
+                            if ($row["MEN_GRUPO"]=="Mantenimiento" && $row["MEND_PERMI"]=="Si"){
+                                    ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link menu-link" href="<?php echo $row["MEN_RUTA"];?>">
+                                                <i class="ri-honour-line"></i> <span data-key="t-widgets"><?php echo $row["MEN_NOM"];?></span>
+                                            </a>
+                                        </li>
+                                    <?php
+                                }
+                            }
+                        ?>       
 
                         <li class="menu-title"><span data-key="t-menu">Compra</span></li>
 

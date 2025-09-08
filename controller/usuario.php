@@ -34,31 +34,37 @@
             break;
         /* TODO: Listado de registros formato JSON para datatable */
         case "listar":
-            $datos=$usuario->get_usuario_x_suc_id($_POST["suc_id"]);
-            $data=Array();
-            foreach($datos as $row){
-                $sub_array = array();
-                $sub_array[] = "";
-                $sub_array[] = $row["USU_CORREO"];
-                $sub_array[] = $row["USU_NOM"];
-                $sub_array[] = $row["USU_APE"];
-                $sub_array[] = $row["USU_DNI"];
-                $sub_array[] = $row["USU_TELF"];
-                $sub_array[] = $row["USU_PASS"];
-                $sub_array[] = $row["ROL_NOM"];
-                $sub_array[] = $row["FECH_CREA"];
-                $sub_array[] = '<button type="button" onClick="editar('.$row["USU_ID"].')" id="'.$row["USU_ID"].'" class="btn btn-warning btn-icon waves-effect waves-light"><i class="ri-edit-2-line"></i></button>';
-                $sub_array[] = '<button type="button" onClick="eliminar('.$row["USU_ID"].')" id="'.$row["USU_ID"].'" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-delete-bin-5-line"></i></button>';
-                $data[] = $sub_array;
-            }
+        $datos=$usuario->get_usuario_x_suc_id($_POST["suc_id"]);
+        $data = array();
 
-            $results = array(
-                "sEcho"=>1,
-                "iTotalDisplayRecords"=>count($data),
-                "aaData"=>$data);
-                echo json_encode($results);
-            break;
-            /* TODO: Mostrar informacion de registro segun su ID */
+        foreach($datos as $row){
+            $sub_array = array();
+            $sub_array[] = "";
+            $sub_array[] = $row["USU_CORREO"];
+            $sub_array[] = $row["USU_NOM"];
+            $sub_array[] = $row["USU_APE"];
+            $sub_array[] = $row["USU_DNI"];
+            $sub_array[] = isset($row["USU_TELF"]) ? $row["USU_TELF"] : ""; // prevenir null
+            $sub_array[] = $row["USU_PASS"];
+            $sub_array[] = $row["ROL_NOM"];
+            $sub_array[] = $row["FECH_CREA"];
+            $sub_array[] = '<button type="button" onClick="editar('.$row["USU_ID"].')" id="'.$row["USU_ID"].'" class="btn btn-warning btn-icon waves-effect waves-light"><i class="ri-edit-2-line"></i></button>';
+            $sub_array[] = '<button type="button" onClick="eliminar('.$row["USU_ID"].')" id="'.$row["USU_ID"].'" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-delete-bin-5-line"></i></button>';
+            $data[] = $sub_array;
+        }
+
+        $results = array(
+            "sEcho" => 1,
+            "iTotalRecords" => count($data),          // 👈 agregado
+            "iTotalDisplayRecords" => count($data),   // 👈 ahora sí correcto
+            "aaData" => $data
+        );
+
+        echo json_encode($results);
+        break;
+
+
+        /* TODO: Mostrar informacion de registro segun su ID */
         case "mostrar":
             $datos=$usuario->get_usuario_x_usu_id($_POST["usu_id"]);
             if(is_array($datos)==true and count($datos)>0){

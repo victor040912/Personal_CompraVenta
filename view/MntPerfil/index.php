@@ -7,7 +7,7 @@
 <!doctype html>
 <html lang="es" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
 <head>
-    <title>AnderCode | Perfil</title>
+    <title>Victor | Perfil</title>
     <?php require_once("../html/head.php"); ?>
 </head>
 
@@ -43,28 +43,37 @@
 
                                     <div class="card-body">
                                         <div class="live-preview">
-                                            <div class="row gy-4">
-                                                <div class="col-xxl-3 col-md-6">
-                                                    <div>
-                                                        <label for="basiInput" class="form-label">Contraseña</label>
-                                                        <input type="password" class="form-control" id="txtpass">
-                                                    </div>
-                                                </div>
+                                            <form id="formPerfil" method="post" autocomplete="off">
+                                                <!-- Campo oculto para cumplir con Chrome -->
+                                                <input type="text" name="fake_username" id="fake_username" autocomplete="username" style="display:none">
 
-                                                <div class="col-xxl-3 col-md-6">
-                                                    <div>
-                                                        <label for="labelInput" class="form-label">Confirmar Contraseña</label>
-                                                        <input type="password" class="form-control" id="txtpassconfirm">
+                                                <div class="row gy-4">
+                                                    <div class="col-xxl-3 col-md-6">
+                                                        <div>
+                                                            <label for="txtpass" class="form-label">Contraseña</label>
+                                                            <input type="password" class="form-control" id="txtpass" name="txtpass" autocomplete="new-password">
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="col-xxl-3 col-md-6">
-                                                    <div>
-                                                        <label for="labelInput" class="form-label">&nbsp;</label>
-                                                        <button type="button" id="btnguardar" class="form-control btn btn-primary btn-label waves-effect waves-light rounded-pill"><i class="ri-user-smile-line label-icon align-middle rounded-pill fs-16 me-2"></i> Guardar</button>
+                                                    <div class="col-xxl-3 col-md-6">
+                                                        <div>
+                                                            <label for="txtpassconfirm" class="form-label">Confirmar Contraseña</label>
+                                                            <input type="password" class="form-control" id="txtpassconfirm" name="txtpassconfirm" autocomplete="new-password">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-xxl-3 col-md-6">
+                                                        <div>
+                                                            <label class="form-label">&nbsp;</label>
+                                                            <button type="submit" id="btnguardar" class="form-control btn btn-primary btn-label waves-effect waves-light rounded-pill">
+                                                                <i class="ri-user-smile-line label-icon align-middle rounded-pill fs-16 me-2"></i> Guardar
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </form>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +94,6 @@
 
 </html>
 <?php
-
     }else{
         header("Location:".Conectar::ruta()."view/404/");
     }

@@ -148,4 +148,23 @@ $(document).on("click","#btnnuevo", function(){
     $('#modalmantenimiento').modal('show');
 });
 
+function filePreview(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#pre_imagen').html('<img src='+e.target.result+' class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image"></img>');
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$(document).on('change','#prod_img',function(){
+    filePreview(this);
+});
+
+$(document).on("click","#btnremovephoto",function(){
+    $('#prod_img').val('');
+    $('#pre_imagen').html('<img src="../../assets/producto/no_imagen.png" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image"></img><input type="hidden" name="hidden_producto_imagen" value="" />');
+});
+
 init();

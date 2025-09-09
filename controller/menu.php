@@ -37,6 +37,11 @@
         case "deshabilitar":
             $menu->update_menu_deshabilitar($_POST["mend_id"]);
             break;
+        /* TODO: Registrar Nuevo rol */
+        case "insert":
+            $menu = new Menu();
+            $menu->insert_menu_detalle_x_rol_id($_POST["rol_id"]);
+            break;
 
     }
 ?>

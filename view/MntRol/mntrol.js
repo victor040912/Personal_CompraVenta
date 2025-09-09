@@ -180,6 +180,7 @@ function deshabilitar(mend_id){
     });
 }
 
+
 $(document).on("click","#btnnuevo",function(){
     $('#rol_id').val('');
     $('#rol_nom').val('');
@@ -187,7 +188,5 @@ $(document).on("click","#btnnuevo",function(){
     $("#mantenimiento_form")[0].reset();
     $('#modalmantenimiento').modal('show');
 });
-
-
 
 init();

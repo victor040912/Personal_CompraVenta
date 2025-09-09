@@ -1,6 +1,8 @@
 <?php
     require_once("../../config/conexion.php");
+    require_once("../../models/Rol.php");
     if(isset($_SESSION["USU_ID"])){
+
 ?>
 
 <!doctype html>
@@ -79,6 +81,7 @@
 
 </html>
 <?php
+
     }else{
         header("Location:".Conectar::ruta()."view/404/");
     }

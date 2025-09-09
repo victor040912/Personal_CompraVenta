@@ -10,6 +10,16 @@
             return $query->fetchAll(PDO::FETCH_ASSOC);
         }
 
+        /* TODO: Registrar el detalle automaticamente que no tiene el Menu */
+        public function insert_menu_detalle_x_rol_id($rol_id){
+            $conectar=parent::Conexion();
+            $sql="SP_I_MENU_02 ?";
+            $query=$conectar->prepare($sql);
+            $query->bindValue(1,$rol_id);
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         /* TODO: Habilitar permiso al rol */
         public function update_menu_habilitar($mend_id){
             $conectar=parent::Conexion();

@@ -127,6 +127,17 @@
             $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        /* TODO: Subit imagen de usuario */
+        public function upload_image(){
+            if (isset($_FILES["usu_img"])){
+                $extension = explode('.', $_FILES['usu_img']['name']);
+                $new_name = rand() . '.' . $extension[1];
+                $destination = '../assets/usuario/' . $new_name;
+                move_uploaded_file($_FILES['usu_img']['tmp_name'], $destination);
+                return $new_name;
+            }
+        }
     }
     
 

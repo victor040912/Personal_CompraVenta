@@ -81,13 +81,15 @@
 
         /* TODO: Acceso a sistema */
 
+        /* TODO:Acceso al Sistema */
         public function login(){
             $conectar=parent::Conexion();
             if (isset($_POST["enviar"])){
+                /* TODO: Recepcion de Parametros desde la Vista Login */
                 $sucursal = $_POST["suc_id"];
                 $correo = $_POST["usu_correo"];
-                $pass = $_POST["usu_pass"];
-                if (empty($sucursal) and empty($correo) and empty($pass) ){
+                $pass =  $_POST["usu_pass"];
+                if (empty($sucursal) and empty($correo) and empty($pass)){
                     exit();
                 }else{
                     $sql="SP_L_USUARIO_04 ?,?,?";
@@ -97,8 +99,8 @@
                     $query->bindValue(3,$pass);
                     $query->execute();
                     $resultado = $query->fetch();
-                    if (is_array($resultado)and count($resultado)>0){
-                        /* TODO: Generar variables de sesion del usuario */
+                    if (is_array($resultado) and count($resultado)>0){
+                        /* TODO:Generar variables de Session del Usuario */
                         $_SESSION["USU_ID"]=$resultado["USU_ID"];
                         $_SESSION["USU_NOM"]=$resultado["USU_NOM"];
                         $_SESSION["USU_APE"]=$resultado["USU_APE"];
@@ -107,12 +109,13 @@
                         $_SESSION["COM_ID"]=$resultado["COM_ID"];
                         $_SESSION["EMP_ID"]=$resultado["EMP_ID"];
                         $_SESSION["ROL_ID"]=$resultado["ROL_ID"];
-                        
+                        $_SESSION["USU_IMG"]=$resultado["USU_IMG"];
+
                         header("Location:".Conectar::ruta()."view/home/");
                     }else{
-                        exit();                       
+                        exit();
                     }
-                }                
+                }
             }else{
                 exit();
             }

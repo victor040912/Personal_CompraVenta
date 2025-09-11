@@ -1,5 +1,6 @@
 $(document).ready(function(){
     var compr_id = getUrlParameter('c');
+    console.log(compr_id);
 
     $.post("../../controller/compra.php?op=mostrar",{compr_id:compr_id},function(data){
         data=JSON.parse(data);

@@ -42,16 +42,8 @@ $(document).ready(function(){
     });
 
     $("#prov_id").change(function(){
-        var prov_id = $(this).val();
-
-        if (prov_id == "0" || prov_id == "") {
-            // Limpiar campos si el usuario selecciona "Seleccionar"
-            $('#prov_ruc').val("");
-            $('#prov_direcc').val("");
-            $('#prov_telf').val("");
-            $('#prov_correo').val("");
-        } else {
-            // Traer datos del proveedor si selecciona uno válido
+        $("#prov_id").each(function(){
+            prov_id = $(this).val();
             $.post("../../controller/proveedor.php?op=mostrar",{prov_id:prov_id},function(data){
                 data=JSON.parse(data);
                 $('#prov_ruc').val(data.PROV_RUC);
@@ -59,9 +51,8 @@ $(document).ready(function(){
                 $('#prov_telf').val(data.PROV_TELF);
                 $('#prov_correo').val(data.PROV_CORREO);
             });
-        }
+        });
     });
-
 
     $("#cat_id").change(function(){
         $("#cat_id").each(function(){
@@ -112,7 +103,8 @@ $(document).on("click","#btnagregar",function(){
             prod_pcompra:prod_pcompra,
             detc_cant:detc_cant
         },function(data){
-            console.log(data);
+            console.log({compr_id, prod_id, prod_pcompra, detc_cant});
+;
         });
 
         $.post("../../controller/compra.php?op=calculo",{compr_id:compr_id},function(data){

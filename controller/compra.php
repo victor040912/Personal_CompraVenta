@@ -129,6 +129,7 @@
         /* TODO: Mostrar datos de la compra por ID */
         case "mostrar":
             $datos=$compra->get_compra($_POST["compr_id"]);
+            $output = array();
             foreach($datos as $row){
                 $output["COMPR_ID"] = $row["COMPR_ID"];
                 $output["SUC_ID"] = $row["SUC_ID"];

@@ -49,8 +49,8 @@
                                         <div class="card-header border-bottom-dashed p-4">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <img src="../../assets/images/LogoA.png" class="card-logo card-logo-dark" alt="logo dark" height="17">
-                                                    <img src="../../assets/images/LogoA.png" class="card-logo card-logo-light" alt="logo light" height="17">
+                                                    <img src="../../assets/images/LogoA.png" class="card-logo card-logo-dark" alt="logo dark" height="150">
+                                                    <img src="../../assets/images/LogoA.png" class="card-logo card-logo-light" alt="logo light" height="150">
                                                     <div class="mt-sm-5 mt-4">
                                                         <h6 class="text-muted text-uppercase fw-semibold">Direccion</h6>
                                                         <p class="text-muted mb-1" id="txtdirecc"></p>
@@ -163,7 +163,7 @@
                                                             <td class="text-end" id="compr_subtotal"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>IGV (18%)</td>
+                                                            <td>IGV (0%)</td>
                                                             <td class="text-end" id="compr_igv"></td>
                                                         </tr>
                                                         <tr class="border-top border-top-dashed fs-15">

@@ -1,44 +1,47 @@
 <?php
-
+    /* TODO: Llamando Clases */
     require_once("../config/conexion.php");
     require_once("../models/Producto.php");
-
-    $producto=new Producto();
+    /* TODO: Inicializando clase */
+    $producto = new Producto();
 
     switch($_GET["op"]){
-
-        /* TODO: Guardar y editar, guardar como el ID este vacio y actualizar cuando se envie el ID */
+        /* TODO: Guardar y editar, guardar cuando el ID este vacio, y Actualizar cuando se envie el ID */
         case "guardaryeditar":
             if(empty($_POST["prod_id"])){
-                $producto->insert_producto($_POST["suc_id"],
-                                        $_POST["cat_id"],
-                                        $_POST["prod_nom"],
-                                        $_POST["prod_descrip"],
-                                        $_POST["und_id"],
-                                        $_POST["mon_id"],
-                                        $_POST["prod_pcompra"],
-                                        $_POST["prod_pventa"],
-                                        $_POST["prod_stock"],
-                                        $_POST["prod_fechaven"],
-                                        $_POST["prod_img"]
-                                    );
+                $datos=$producto->insert_producto(
+                    $_POST["suc_id"],
+                    $_POST["cat_id"],
+                    $_POST["prod_nom"],
+                    $_POST["prod_descrip"],
+                    $_POST["und_id"],
+                    $_POST["mon_id"],
+                    $_POST["prod_pcompra"],
+                    $_POST["prod_pventa"],
+                    $_POST["prod_stock"],
+                    $_POST["prod_fechaven"],
+                    $_POST["prod_img"]
+                );
+                echo json_encode($datos);
             }else{
-                $producto->update_producto($_POST["prod_id"],
-                                        $_POST["suc_id"],
-                                        $_POST["cat_id"],
-                                        $_POST["prod_nom"],
-                                        $_POST["prod_descrip"],
-                                        $_POST["und_id"],
-                                        $_POST["mon_id"],
-                                        $_POST["prod_pcompra"],
-                                        $_POST["prod_pventa"],
-                                        $_POST["prod_stock"],
-                                        $_POST["prod_fechaven"],
-                                        $_POST["prod_img"]
-                                    );
+                $producto->update_producto(
+                    $_POST["prod_id"],
+                    $_POST["suc_id"],
+                    $_POST["cat_id"],
+                    $_POST["prod_nom"],
+                    $_POST["prod_descrip"],
+                    $_POST["und_id"],
+                    $_POST["mon_id"],
+                    $_POST["prod_pcompra"],
+                    $_POST["prod_pventa"],
+                    $_POST["prod_stock"],
+                    $_POST["prod_fechaven"],
+                    $_POST["prod_img"]
+                );
             }
             break;
-        /* TODO: Listado de registros formato JSON para datatable */
+
+        /* TODO: Listado de registros formato JSON para Datatable JS */
         case "listar":
             $datos=$producto->get_producto_x_suc_id($_POST["suc_id"]);
             $data=Array();
@@ -81,7 +84,8 @@
                 "aaData"=>$data);
             echo json_encode($results);
             break;
-        /* TODO: Mostrar informacion de registro segun su ID */
+
+        /* TODO:Mostrar informacion de registro segun su ID */
         case "mostrar":
             $datos=$producto->get_producto_x_prod_id($_POST["prod_id"]);
             if (is_array($datos)==true and count($datos)>0){
@@ -107,11 +111,11 @@
                 echo json_encode($output);
             }
             break;
-        /* TODO: cambiar esato a 0 del registro */
-        case "eliminar":
+
+        /* TODO: Cambiar Estado a 0 del Registro */
+        case "eliminar";
             $producto->delete_producto($_POST["prod_id"]);
             break;
-        
         /* TODO: Listado de Productos */
         case "combo";
             $datos=$producto->get_producto_x_cat_id($_POST["cat_id"]);
@@ -124,6 +128,31 @@
                 echo $html;
             }
             break;
-    }
+        /* TODO: Listar consumo de Productos */
+        case "consumo":
+            $datos=$producto->get_producto_consumo($_POST["prod_id"]);
+            $data=Array();
+            foreach($datos as $row){
+                $sub_array = array();
+                if ($row["REGISTRO"] == 'Compra'){
+                    $sub_array[] = "<div class='flex-shrink-0 avatar-xs acitivity-avatar'><div class='avatar-title bg-soft-success text-success rounded-circle'><i class='ri-shopping-cart-2-line'></i></div></div>";
+                }else{
+                    $sub_array[] = "<div class='flex-shrink-0 avatar-xs acitivity-avatar'><div class='avatar-title bg-soft-danger text-danger rounded-circle'><i class='ri-stack-fill'></i></div></div>";
+                }
+                $sub_array[] = $row["REGISTRO"];
+                $sub_array[] = $row["DOC_NOM"];
+                $sub_array[] = $row["FECH_CREA"];
+                $sub_array[] = $row["DETC_CANT"];
+                $data[] = $sub_array;
+            }
 
+            $results = array(
+                "sEcho"=>1,
+                "iTotalRecords"=>count($data),
+                "iTotalDisplayRecords"=>count($data),
+                "aaData"=>$data);
+            echo json_encode($results);
+            break;
+
+    }
 ?>

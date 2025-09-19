@@ -1,7 +1,6 @@
 <?php
-
-    class Producto extends conectar{
-        /* TODO: Listar registros */
+    class Producto extends Conectar{
+        /* TODO: Listar Registros */
         public function get_producto_x_suc_id($suc_id){
             $conectar=parent::Conexion();
             $sql="SP_L_PRODUCTO_01 ?";
@@ -10,7 +9,8 @@
             $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);
         }
-        /* TODO: Listas registro por id en especifico */
+
+        /* TODO: Listar Registro por ID en especifico */
         public function get_producto_x_prod_id($prod_id){
             $conectar=parent::Conexion();
             $sql="SP_L_PRODUCTO_02 ?";
@@ -29,8 +29,8 @@
             $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);
         }
-        
-        /* TODO: Eiminar o cambiar estado a eliminado */
+
+        /* TODO: Eliminar o cambiar estado a eliminado */
         public function delete_producto($prod_id){
             $conectar=parent::Conexion();
             $sql="SP_D_PRODUCTO_01 ?";
@@ -38,6 +38,7 @@
             $query->bindValue(1,$prod_id);
             $query->execute();
         }
+
         /* TODO: Registro de datos */
         public function insert_producto($suc_id,$cat_id,$prod_nom,$prod_descrip,$und_id,
                                         $mon_id,$prod_pcompra,$prod_pventa,$prod_stock,
@@ -67,7 +68,6 @@
             $query->execute();
         }
 
-        /* TODO: Actualizar datos */
         /* TODO:Actualizar Datos */
         public function update_producto($prod_id,$suc_id,$cat_id,$prod_nom,$prod_descrip,$und_id,
                                         $mon_id,$prod_pcompra,$prod_pventa,$prod_stock,
@@ -121,5 +121,4 @@
             return $query->fetchAll(PDO::FETCH_ASSOC);
         }
     }
-
 ?>

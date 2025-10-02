@@ -4,9 +4,9 @@
     class conectar{
         protected $dbh;
 
-        protected function Conexion(){
+        public function Conexion(){
             try{
-                $conectar = $this->dbh=new PDO("sqlsrv:Server=localhost\\SQLEXPRESS;Database=CompraVenta","sa","Hiraoka.vic4$");
+                $conectar = $this->dbh=new PDO("sqlsrv:Server=localhost\\SQLEXPRESS;Database=CompraVenta","sa","Victorquiroz13");
                 return $conectar;
             }catch(Exception $e){
                 print "Error Conexion BD". $e->getMessage() ."<br/>>";
@@ -17,3 +17,4 @@
             return "http://localhost/PERSONAL_CompraVenta/";
         }
     }
+?>

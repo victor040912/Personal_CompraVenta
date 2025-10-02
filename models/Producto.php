@@ -80,7 +80,7 @@
             if($_FILES["prod_img"]["name"] !=''){
                 $prod_img=$prod->upload_image();
             }else{
-                $prod_img = $POST["hidden_producto_imagen"];
+                $prod_img = $_POST["hidden_producto_imagen"];
             }
 
             $sql="SP_U_PRODUCTO_01 ?,?,?,?,?,?,?,?,?,?,?,?";
